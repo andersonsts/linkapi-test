@@ -13,7 +13,7 @@ class OpportunityController {
     const { data: responseDataPipedrive } = await apiPipedrive.get('deals', {
         params: {
             status: 'won',
-            api_token: 'adbc26fd6a401b46434d6cc84d095661f4ce2c7b',
+            api_token: process.env.API_PIPEDRIVE_KEY,
         }
     });
 
@@ -124,7 +124,7 @@ class OpportunityController {
         await axios.all(
           orderXMLWithEncode.map(order =>
             axios.post(
-              `https://bling.com.br/Api/v2/pedido/json/?apikey=861ad1ef254cd7674e0accccff704f325376933d65e5b8ad7f8e86d2f69e4b9c64591d54&xml=${order}`
+              `https://bling.com.br/Api/v2/pedido/json/?apikey=${process.env.API_BLING_KEY}&xml=${order}`
             ),
           )
         );
@@ -139,7 +139,7 @@ class OpportunityController {
       await axios.all(
         orderXMLWithEncode.map(order =>
           axios.post(
-            `https://bling.com.br/Api/v2/pedido/json/?apikey=861ad1ef254cd7674e0accccff704f325376933d65e5b8ad7f8e86d2f69e4b9c64591d54&xml=${order}`
+            `https://bling.com.br/Api/v2/pedido/json/?apikey=${process.env.API_BLING_KEY}&xml=${order}`
           ),
         )
       );
